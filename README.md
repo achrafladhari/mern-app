@@ -1,4 +1,4 @@
-# MERN APP
+# MERN APP - TP 1
 
 ## Vue d'Ensemble
 Ce projet est une application full-stack qui consiste en un client React et un serveur Node.js utilisant MongoDB comme base de données. Docker est utilisé pour la conteneurisation, et Docker Compose est utilisé pour orchestrer les services.
@@ -67,3 +67,55 @@ Docker Compose est utilisé pour gérer les différents services de l'applicatio
 ![Network](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/screen2.png)
 
 
+---
+
+# Jenkins - TP 2
+## Pipeline 
+
+Notre pipeline Jenkins automatise le déploiement d'une application MERN (MongoDB, Express, React, Node.js). Il surveille les changements dans le dépôt Git, construit et scanne des images Docker pour les services client et serveur lorsque des modifications sont détectées dans leurs répertoires respectifs. Les images sont ensuite poussées vers Docker Hub après avoir passé les scans de sécurité avec Trivy. Enfin, une phase de nettoyage supprime les images temporaires pour maintenir un environnement propre.
+
+## Screens
+### Build without client changes
+![Without Client](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/build_with_server_changes.png)
+### Build without server changes
+![Without Server](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/build_client_changes.png)
+### Build without any changes
+![Without Changes](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/build_without_changes.png)
+### Build with an error
+![With Error](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/build_fail_with_post_actions.png)
+
+---
+
+# Kubernetes - TP 3
+## Configuration Ingress 
+1. Ajout du dépôt Helm du contrôleur Ingress NGINX : `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
+2. Création d'un namespace Kubernetes pour ingress : `kubectl create ns ingress`
+3. Mise à jour des dépôts Helm : `helm repo update`
+4. Installation du contrôleur Ingress NGINX : `helm install my-ingress ingress-nginx/ingress-nginx -n ingress`
+5. Ajout une ressource Kubernetes de type Ingress pour router les requetes : `kubectl apply -f ingress.yaml`
+## Ajouter les ressources Kubernetes 
+`kubectl apply -f <nom_fichier.yaml>`
+
+## Screens
+### Kubernetes Azure
+![Kubernetes Azure](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/kube_azure.png)
+### ConfigMap
+![ConfigMap](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/app-config.png)
+### Ajout du dépot - création ns - mise a jour des dépots - installation ingress NGINX
+![HELM](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/ingress_nginx.png)
+### Ajout Ressource Kubernetes Ingress
+![INGRESS](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/ingress_config.png)
+### Ajouter les autres ressources Kubernetes (deployments - services)
+![DEPLOYMENTS SERVICES](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/kube_commands.png)
+### Services
+![Services](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/kube_service.png)
+### Services And Ingress Azure
+![Services Azure](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/service_and_ingress_azure.png)
+### Deployments
+![Deployments](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/scaling_server_deployment.png)
+### Deployments Azure
+![Deployments Azure](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/deployment_azure.png)
+### Pods
+![Deployments](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/pods_kube.png)
+### Test Application
+![Application](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/app_test.png)

@@ -34,9 +34,9 @@ securityContext: {}
 
 # Service configuration
 service:
-  type: ClusterIP  # Use ClusterIP, LoadBalancer, or NodePort as needed
+  type: NodePort  # Use ClusterIP, LoadBalancer, or NodePort as needed
   port: 3000
- # targetPort: 3000
+  targetPort: 3000
 
 # Ingress configuration
 ingress:
@@ -45,7 +45,7 @@ ingress:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/rewrite-target: /$1
   hosts:
-    - host: example.com  # Replace with your application's hostname
+    - host:
       paths:
         - path: /(.*)
           pathType: ImplementationSpecific

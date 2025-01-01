@@ -1,0 +1,10 @@
+client:
+  autoscaling:
+    enabled: false
+
+server:
+  replicaCount: 2
+
+mongodb:
+  serviceAccount:
+    create: true

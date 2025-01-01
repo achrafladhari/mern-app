@@ -43,16 +43,13 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
+    nginx.ingress.kubernetes.io/rewrite-target: /  # Keep the rewrite target simple
   hosts:
     - host:
       paths:
-        - path: /(.*)
-          pathType: ImplementationSpecific
-        - path: /metrics/(.*)  # Expose metrics on /metrics path
-          pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
-
-  tls: []
+        - path: /  # Expose main app on /
+        - path: /metrics  # Expose metrics on /metrics
+  tls: []  # Optional: add TLS configuration if needed
 
 # Environment variables for the application
 env:

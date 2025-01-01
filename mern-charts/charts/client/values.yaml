@@ -34,9 +34,9 @@ securityContext: {}
 
 # Service configuration
 service:
-  type: NodePort  # Use ClusterIP, LoadBalancer, or NodePort as needed
+  type: ClusterIP  # Use ClusterIP, LoadBalancer, or NodePort as needed
   port: 3000
-  targetPort: 3000
+ # targetPort: 3000
 
 # Ingress configuration
 ingress:

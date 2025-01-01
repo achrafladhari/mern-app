@@ -1,4 +1,4 @@
-# MERN APP - TP 1
+# MERN APP - TP 2
 
 ## Vue d'Ensemble
 Ce projet est une application full-stack qui consiste en un client React et un serveur Node.js utilisant MongoDB comme base de données. Docker est utilisé pour la conteneurisation, et Docker Compose est utilisé pour orchestrer les services.
@@ -69,7 +69,7 @@ Docker Compose est utilisé pour gérer les différents services de l'applicatio
 
 ---
 
-# Jenkins - TP 2
+# Jenkins - TP 3
 ## Pipeline 
 
 Notre pipeline Jenkins automatise le déploiement d'une application MERN (MongoDB, Express, React, Node.js). Il surveille les changements dans le dépôt Git, construit et scanne des images Docker pour les services client et serveur lorsque des modifications sont détectées dans leurs répertoires respectifs. Les images sont ensuite poussées vers Docker Hub après avoir passé les scans de sécurité avec Trivy. Enfin, une phase de nettoyage supprime les images temporaires pour maintenir un environnement propre.
@@ -86,7 +86,7 @@ Notre pipeline Jenkins automatise le déploiement d'une application MERN (MongoD
 
 ---
 
-# Kubernetes - TP 3
+# Kubernetes - TP 4
 ## Configuration Ingress 
 1. Ajout du dépôt Helm du contrôleur Ingress NGINX : `helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx`
 2. Création d'un namespace Kubernetes pour ingress : `kubectl create ns ingress`
@@ -119,3 +119,37 @@ Notre pipeline Jenkins automatise le déploiement d'une application MERN (MongoD
 ![Deployments](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/pods_kube.png)
 ### Test Application
 ![Application](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/app_test.png)
+
+---
+
+# ArgoCD & HELM - TP 5
+## Création Charts Helm 
+1. Création du répertoire mern-charts : `mkdir mern-charts`
+2. Création Chart.yaml : `touch Chart.yaml`
+3. Création du répertoire charts contenant nos charts dans mern-charts : `mkdir mern-charts/charts`
+4. Création 3 charts pour mongodb, Client et Server : `helm create <mongodb, client, server>`
+5. Configuration du values.yaml dans chaque chart.
+6. Ajout env dans templates/deployment.yaml pour référencer le bloc env à partir de values.yaml
+7. Ajout du dépôt Helm du contrôleur Ingress NGINX (TP4)
+8. Installation ArgoCD dans le Cluster Kubernetes
+9. Si vous avez utilisé AKS ou EKS vous devez définir le type (service) du serveur ArgoCD "LoadBalancer": `kubectl edit svc argocd-server -n argocd`
+10. Nous avons connecté le Repo avec HTTPS parceque notre repo est public
+11. Ajouter l'application dans ArgoCD
+
+## Screens
+### ArgoCD
+![ArgoCD](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/config_cluster_argocd.png)
+### ArgoCD Service
+![ArgoCD Service](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/edit_argocd_server_LoadBalancer.png)
+### ArgoCD Password
+![INGRESS](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/getting_argocd_password.png)
+### Ajouter les charts
+![CHARTS](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/mern-charts-dir.png)
+### Configuration deployment pour réferencer le bloc env a partir de values.yaml
+![Configuration](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/add_env_in_deploymentYaml.png)
+### MERN APP
+![Application](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/mern-app-argocd.png)
+### MERN APP WITH AUGMENTATION REPLICAs
+![Application_Increse](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/augmentation_replica.png)
+### Test Application
+![Application](https://raw.githubusercontent.com/achrafladhari/mern-app/main/screens/test_app.png)

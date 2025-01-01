@@ -34,6 +34,7 @@ securityContext: {}
 
 # Service configuration
 service:
+  type: ClusterIP
   ports:
     - port: 3000  # Use ClusterIP, LoadBalancer, or NodePort as needed
       targetPort: 3000

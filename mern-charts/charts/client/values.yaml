@@ -34,15 +34,14 @@ securityContext: {}
 
 # Service configuration
 service:
-  type: NodePort  # Use ClusterIP, LoadBalancer, or NodePort as needed
-  port: 3000
-  targetPort: 3000
+  ports:
+    - port: 3000  # Use ClusterIP, LoadBalancer, or NodePort as needed
+      targetPort: 3000
+      name: http
+    - port: 9100  # Use ClusterIP, LoadBalancer, or NodePort as needed
+      targetPort: 9100
+      name: metrics
 # Service configuration for metrics (port 9100)
-metricsService:
-  type: ClusterIP  # Use ClusterIP for internal access
-  port: 9100
-  targetPort: 9100
-# Ingress configuration
 ingress:
   enabled: true
   annotations:
@@ -51,11 +50,11 @@ ingress:
   hosts:
     - host:
       paths:
-        - path: /metrics  # Expose metrics on /metrics path
+        - path: /metrics/(.*)  # Expose metrics on /metrics path
           pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
           backend:
             service:
-              name: mern-client-metrics  # The service for the metrics
+              name: mern-client-service  # The service for the metrics
               port:
                 number: 9100
         - path: /(.*)

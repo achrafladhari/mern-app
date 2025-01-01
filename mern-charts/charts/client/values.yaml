@@ -47,18 +47,8 @@ ingress:
       paths:
         - path: /(.*)
           pathType: ImplementationSpecific
-          backend:
-            service:
-              name: mern-app-client  # The service for the main app
-              port:
-                number: 3000
         - path: /metrics/(.*)  # Expose metrics on /metrics path
           pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
-          backend:
-            service:
-              name: mern-app-client  # The service for the metrics
-              port:
-                number: 9100
 
 
   tls: []

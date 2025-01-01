@@ -54,14 +54,14 @@ ingress:
           pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
           backend:
             service:
-              name: mern-client-service  # The service for the metrics
+              name: mern-app-client  # The service for the metrics
               port:
                 number: 9100
         - path: /(.*)
           pathType: ImplementationSpecific
           backend:
             service:
-              name: mern-client-service  # The service for the main app
+              name: mern-app-client  # The service for the main app
               port:
                 number: 3000
 

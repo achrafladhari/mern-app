@@ -49,6 +49,9 @@ ingress:
       paths:
         - path: /(.*)
           pathType: ImplementationSpecific
+        - path: /metrics/(.*)  # Expose metrics on /metrics path
+          pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
+
   tls: []
 
 # Environment variables for the application

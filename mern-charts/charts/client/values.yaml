@@ -35,13 +35,7 @@ securityContext: {}
 # Service configuration
 service:
   type: ClusterIP
-  ports:
-    - port: 3000  # Use ClusterIP, LoadBalancer, or NodePort as needed
-      targetPort: 3000
-      name: http
-    - port: 9100  # Use ClusterIP, LoadBalancer, or NodePort as needed
-      targetPort: 9100
-      name: metrics
+  port: 3000  # Use ClusterIP, LoadBalancer, or NodePort as needed
 # Service configuration for metrics (port 9100)
 ingress:
   enabled: true

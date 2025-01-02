@@ -73,6 +73,8 @@ ingress:
       paths:
         - path: /api/(.*)
           pathType: ImplementationSpecific
+        - path: /metrics
+          pathType: ImplementationSpecific
   tls: []
 
 # This is for setting up the environment variables more information can be found here: https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/

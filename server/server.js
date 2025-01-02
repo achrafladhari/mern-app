@@ -35,6 +35,7 @@ app.get("/", function (req, res) {
   res.send("App is running");
 });
 
+
 // Expose metrics at /metrics
 app.get('/metrics', async (req, res) => {
   res.set('Content-Type', register.contentType);

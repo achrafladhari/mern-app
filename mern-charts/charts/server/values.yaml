@@ -17,7 +17,7 @@ image:
 podAnnotations:
   prometheus.io/scrape: "true"
   prometheus.io/port: "9000"  # Replace with your application's metrics port if different
-  prometheus.io/path: "/api/metrics"  # Default path for Prometheus scraping
+  prometheus.io/path: "/metrics"  # Default path for Prometheus scraping
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
 imagePullSecrets: []

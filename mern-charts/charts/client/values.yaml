@@ -23,7 +23,7 @@ serviceAccount:
 # Pod annotations and labels
 podAnnotations:
   prometheus.io/scrape: "true"
-  prometheus.io/port: "9100"  # Replace with your application's metrics port if different
+  prometheus.io/port: "3000"  # Replace with your application's metrics port if different
   prometheus.io/path: "/metrics"  # Default path for Prometheus scraping
 
 podLabels: {}
@@ -47,9 +47,6 @@ ingress:
       paths:
         - path: /(.*)
           pathType: ImplementationSpecific
-        - path: /metrics/(.*)  # Expose metrics on /metrics path
-          pathType: ImplementationSpecific   # Optional: use prefix to match /metrics or sub-paths
-
 
   tls: []
 

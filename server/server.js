@@ -1,6 +1,32 @@
 const express = require("express");
 const app = express();
 const cors = require("cors");
+const client = require('prom-client');
+
+const register = new client.Registry();
+// Create a counter metric
+const httpRequestsCounter = new client.Counter({
+  name: 'http_requests_total',
+  help: 'Total number of HTTP requests',
+  labelNames: ['method', 'path'],
+});
+
+register.registerMetric(httpRequestsCounter);
+
+// Add a default metrics collection
+client.collectDefaultMetrics({ register });
+
+// Increment counter for each request
+app.use((req, res, next) => {
+  httpRequestsCounter.inc({ method: req.method, path: req.path });
+  next();
+});
+
+// Expose metrics at /metrics
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
 
 require("dotenv").config();
 const port = process.env.PORT || 9000;

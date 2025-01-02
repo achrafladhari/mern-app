@@ -22,11 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Expose metrics at /metrics
-app.get('/metrics', async (req, res) => {
-  res.set('Content-Type', register.contentType);
-  res.end(await register.metrics());
-});
+
 
 require("dotenv").config();
 const port = process.env.PORT || 9000;
@@ -38,6 +34,13 @@ app.use(require("./routes/record"));
 app.get("/", function (req, res) {
   res.send("App is running");
 });
+
+// Expose metrics at /metrics
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(await register.metrics());
+});
+
 const dbo = require("./db/conn");
 
 

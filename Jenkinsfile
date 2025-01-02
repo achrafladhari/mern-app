@@ -14,7 +14,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main',
+                git branch: 'devops',
                     url: 'git@github.com:achrafladhari/mern-app.git',
                     credentialsId: 'github_ssh'
             }

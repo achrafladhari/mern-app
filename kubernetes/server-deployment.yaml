@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mern-server
-        image: chrayef/mern-server:latest
+        image: docker.io/chrayef/mern-server:latest
         ports:
         - containerPort: 9000
         envFrom:

@@ -4,5 +4,5 @@ metadata:
   name: app-configmap
 data:
   MONGO_URI: mongodb://mongodb-service:27017/mern-app
-  REACT_APP_API_URL: http://mern-app.francecentral.cloudapp.azure.com/api
+  REACT_APP_API_URL: http://172.18.8.240/api
   PORT_SERVER: "9000"

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mern-client
-        image: chrayef/mern-client:latest
+        image: docker.io/chrayef/mern-client:latest
         ports:
         - containerPort: 3000
         envFrom:
